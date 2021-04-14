@@ -21,6 +21,8 @@ var fetch = require('node-fetch');
 var cheerio = require('cheerio');
 var request = require('request');
 var TikTokScraper = require('tiktok-scraper');
+var YoutubeAPI = require('simple-youtube-api')
+var youtubs = new YoutubeAPI('AIzaSyCnHUBkXdt4YQGYLwRXtiGR-vJi43X38qQ');
 var router  = express.Router();
 
 var { color, bgcolor } = require(__path + '/lib/color.js');
@@ -30,6 +32,7 @@ var {
 	Nulis,
 	Vokal,
 	Base,
+        ytplay,
 	Searchnabi,
     Gempa
 } = require('./../lib');
@@ -1859,6 +1862,33 @@ router.get('/manga', async (req, res, next) => {
 })
 })
 
+router.get('/yt/play', async (req, res, next) => {
+	var vid = [];
+	var q = req.query.query,
+		apikeyInput = req.query.apikey;
+
+	if (!apikeyInput) return res.json(loghandler.notparam)
+	a = await cekApiKey(apikeyInput)
+	if (a == null) return res.json(loghandler.invalidKey)
+	logPengguna(apikeyInput, a, 'Youtube')
+	if (!q) return res.json(loghandler.notquery)
+	var videos = []
+	ytplay(q).then(async (resplay) => {
+			var gasplay = resplay[0]
+			
+			ytdldown(gasplay,'multi')
+			.then(result => {
+				res.json({status:true,creator:creator,result})
+			})
+			.catch (e=>{
+				console.log('Error :', color(e,'red'))
+				res.json(loghandler.error)
+			})
+	})
+	.catch (e => {
+		console.log('Error : ', color(e,'red'))
+	})
+})
 
 router.get('/random/wallpaper', async (req, res, next) => {
         var apikeyInput = req.query.apikey
