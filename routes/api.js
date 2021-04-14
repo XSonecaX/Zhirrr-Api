@@ -1862,7 +1862,7 @@ router.get('/manga', async (req, res, next) => {
 })
 })
 
-router.get('/yt/play', async (req, res, next) => {
+router.get('/api/ytplay', async (req, res, next) => {
 	var vid = [];
 	var q = req.query.query,
 		apikeyInput = req.query.apikey;
