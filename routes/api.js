@@ -2500,17 +2500,17 @@ router.get('/textmaker/el', async (req, res, next) => {
         if (theme == 'neve') {
             try {
             request.post({
-                url: "https://ephoto360.com/hieu-ung-chu-tuyet-giang-sinh-online-738.html",
+                url: "https://textpro.me/create-a-christmas-holiday-snow-text-effect-1007.html",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: `text_1=${text}&login=Tạo ảnh`,
+                body: `text_1=${text}&login=GO`,
                 }, (e,r,b) => {
                     if (!e) {
                         $ = cheerio.load(b)
                         $(".thumbnail").find("img").each(function() {
                             h = $(this).attr("src")
-                            var result = "https://ephoto360.com"+h
+                            var result = "https://textpro.me/"+h
                             fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=761ea2d5575581057a799d14e9c78e28&image=${result}&name=mistic-api`))
                                 .then(response => response.json())
                                 .then(data => {
@@ -2536,17 +2536,17 @@ router.get('/textmaker/el', async (req, res, next) => {
                 }
         } else if (theme == 'chuva') {
             request.post({
-                url: "https://ephoto360.com/hieu-ung-viet-chu-len-cua-kinh-mua-tam-trang-dep-682.html",
+                url: "https://textpro.me/metal-purple-dual-effect-973.html",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: `text_1=${text}&login=Tạo ảnh`,
+                body: `text_1=${text}&login=GO`,
                 }, (e,r,b) => {
                     if (!e) {
                         $ = cheerio.load(b)
                         $(".thumbnail").find("img").each(function() {
                             h = $(this).attr("src")
-                            var result = "https://ephoto360.com"+h
+                            var result = "https://textpro.me/"+h
                             fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=761ea2d5575581057a799d14e9c78e28&image=${result}&name=mistic-api`))
                                 .then(response => response.json())
                                 .then(data => {
