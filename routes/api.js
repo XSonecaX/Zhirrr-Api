@@ -2616,7 +2616,7 @@ router.get('/textmaker/nt', async (req, res, next) => {
                                 })
                         })
                     }
-                })
+                }) 
                 } catch (e) {
                     console.log(e);
                 res.json(loghandler.error)
