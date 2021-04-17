@@ -2510,7 +2510,7 @@ router.get('/textmaker/el', async (req, res, next) => {
                         $ = cheerio.load(b)
                         $(".thumbnail").find("img").each(function() {
                             h = $(this).attr("src")
-                            var result = "https://ephoto360.com/"+h
+                            var result = "https://ephoto360.com"+h
                             fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=761ea2d5575581057a799d14e9c78e28&image=${result}&name=mistic-api`))
                                 .then(response => response.json())
                                 .then(data => {
@@ -2546,7 +2546,7 @@ router.get('/textmaker/el', async (req, res, next) => {
                         $ = cheerio.load(b)
                         $(".thumbnail").find("img").each(function() {
                             h = $(this).attr("src")
-                            var result = "https://ephoto360.com/"+h
+                            var result = "https://ephoto360.com"+h
                             fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=761ea2d5575581057a799d14e9c78e28&image=${result}&name=mistic-api`))
                                 .then(response => response.json())
                                 .then(data => {
