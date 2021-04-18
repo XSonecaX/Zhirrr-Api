@@ -2805,7 +2805,7 @@ router.get('/textmaker03', async (req, res, next) => {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: `text_1=${text}&login=GO`,
+                body: `text_1=${text}&login=OK`,
                 }, (e,r,b) => {
                     if (!e) {
                         $ = cheerio.load(b)
@@ -2841,7 +2841,7 @@ router.get('/textmaker03', async (req, res, next) => {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: `text_1=${text}&login=GO`,
+                body: `text_1=${text}&login=OK`,
                 }, (e,r,b) => {
                     if (!e) {
                         $ = cheerio.load(b)
