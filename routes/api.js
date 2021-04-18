@@ -2785,6 +2785,93 @@ router.get('/textmaker/nt', async (req, res, next) => {
         }
 })
 
+router.get('/textmaker03', async (req, res, next) => {
+        var theme = req.query.theme,
+             text = req.query.text,
+             text2 = req.query.text2,
+             text3 = req.query.text3,
+             apikeyInput = req.query.apikey;
+        
+    if(!apikeyInput) return res.json(loghandler.notparam)
+    if(apikeyInput != 'mistic') return res.json(loghandler.invalidKey)
+        if (!theme) return res.json(loghandler.nottheme)
+        if (theme != 'sky' && theme != 'blackpink') return res.json(loghandler.notheme)
+        if (!text) return res.json(loghandler.nottext)
+
+        if (theme == 'sky') {
+            try {
+            request.post({
+                url: "https://en.ephoto360.com/write-text-effect-clouds-in-the-sky-online-619.html",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `text_1=${text}&login=GO`,
+                }, (e,r,b) => {
+                    if (!e) {
+                        $ = cheerio.load(b)
+                        $(".thumbnail").find("img").each(function() {
+                            h = $(this).attr("src")
+                            var result = "https://en.ephoto360.com/"+h
+                            fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=761ea2d5575581057a799d14e9c78e28&image=${result}&name=${randomTextNumber}`))
+                                .then(response => response.json())
+                                .then(data => {
+                                    var urlnya = data.data.url,
+                                        delete_url = data.data.delete_url;
+                                        res.json({
+                                            status : true,
+                                            creator : `${creator}`,
+                                            message : `jangan lupa follow ${creator}`,
+                                            result:{
+                                                url:urlnya,
+                                                delete_url: delete_url,
+                                                info: 'url akan hilang setelah 2 menit'
+                                            }
+                                        })
+                                })
+                        })
+                    }
+                })
+                } catch (e) {
+                    console.log(e);
+                res.json(loghandler.error)
+                }
+        } else if (theme == 'blackpink') {
+            request.post({
+                url: "https://en.ephoto360.com/create-blackpink-logo-online-free-607.html",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `text_1=${text}&login=GO`,
+                }, (e,r,b) => {
+                    if (!e) {
+                        $ = cheerio.load(b)
+                        $(".thumbnail").find("img").each(function() {
+                            h = $(this).attr("src")
+                            var result = "https://en.ephoto360.com/"+h
+                            fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=761ea2d5575581057a799d14e9c78e28&image=${result}&name=${randomTextNumber}`))
+                                .then(response => response.json())
+                                .then(data => {
+                                    var urlnya = data.data.url,
+                                        delete_url = data.data.delete_url;
+                                        res.json({
+                                            status : true,
+                                            creator : `${creator}`,
+                                            message : `jangan lupa follow ${creator}`,
+                                            result:{
+                                                url:urlnya,
+                                                delete_url: delete_url,
+                                                info: 'url akan hilang setelah 2 menit'
+                                            }
+                                        })
+                                })
+                        })
+                    }
+                }) 
+        } else {
+            res.json(loghandler.error)
+        }
+})
+
 router.get('/textmaker/roses', async (req, res, next) => {
         var theme = req.query.theme,
              text = req.query.text,
