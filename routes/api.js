@@ -2539,7 +2539,7 @@ router.get('/textmaker02', async (req, res, next) => {
         	if (!text2) return res.json(loghandler.nottext2)
         if (!text3) return res.json(loghandler.nottext3)
             request.post({
-                url: "https://photooxy.com/other-design/make-google-suggestion-photos-238.html",
+                url: "https://photooxy.com/logo-and-text-effects/shadow-text-effect-in-the-sky-394.html",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
